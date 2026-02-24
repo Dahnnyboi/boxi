@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(glfw3 3.3 REQUIRED)
 
+file(GLOB SOURCES src/*.cpp)
+
 add_executable(boxi
-  src/main.cpp
+  ${SOURCES}
   external/glad/src/glad.c
 )
 
