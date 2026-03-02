@@ -10,7 +10,11 @@ file(GLOB SOURCES src/*.cpp)
 add_executable(boxi
   ${SOURCES}
   external/glad/src/glad.c
+  external/stb/src/stb_image.cpp
 )
 
-target_include_directories(boxi PRIVATE external/glad/include)
+target_include_directories(boxi PRIVATE 
+  external/glad/include
+  external/stb/include
+)
 target_link_libraries(boxi glfw)
