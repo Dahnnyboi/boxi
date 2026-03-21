@@ -3,7 +3,15 @@ project(boxi)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(glfw3 3.3 REQUIRED)
+# Try system GLFW first
+find_package(glfw3 3.3 QUIET)
+
+if (glfw3_FOUND)
+    message(STATUS "Using system GLFW")
+else()
+    message(STATUS "Using local GLFW")
+    add_subdirectory(external/glfw)
+endif()
 
 file(GLOB SOURCES src/*.cpp)
 
@@ -17,4 +25,5 @@ target_include_directories(boxi PRIVATE
   external/glad/include
   external/stb/include
 )
+
 target_link_libraries(boxi glfw)
